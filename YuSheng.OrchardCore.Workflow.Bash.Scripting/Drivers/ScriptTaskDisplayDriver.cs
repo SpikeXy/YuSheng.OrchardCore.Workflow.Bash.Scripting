@@ -5,16 +5,16 @@ using YuSheng.OrchardCore.Workflow.Bash.Scripting.ViewModels;
 
 namespace YuSheng.OrchardCore.Workflow.Bash.Scripting.Drivers
 {
-    public class ScriptTaskDisplayDriver : ActivityDisplayDriver<BashScriptTask, ScriptTaskViewModel>
+    public class ScriptTaskDisplayDriver : ActivityDisplayDriver<BashScriptTask, YuShengScriptTaskViewModel>
     {
-        protected override void EditActivity(BashScriptTask source, ScriptTaskViewModel model)
+        protected override void EditActivity(BashScriptTask source, YuShengScriptTaskViewModel model)
         {
             model.BashBinPath = source.BashBinPath.ToString();
             model.BashFilePath = source.BashFilePath.ToString();
             model.Script = source.Script.Expression;
         }
 
-        protected override void UpdateActivity(ScriptTaskViewModel model, BashScriptTask activity)
+        protected override void UpdateActivity(YuShengScriptTaskViewModel model, BashScriptTask activity)
         {
             activity.BashBinPath = new WorkflowExpression<string>(model.BashBinPath);
             activity.BashFilePath = new WorkflowExpression<string>(model.BashFilePath);
